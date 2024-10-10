@@ -1,0 +1,34 @@
+name: ubuntu_flutter_brick
+description: This brick creates a monorepo according to Ubuntu's Flutter project template.
+repository: https://github.com/ubuntu/flutter_project_template
+version: 0.1.0+1
+
+# The following defines the environment for the current brick.
+# It includes the version of mason that the brick requires.
+environment:
+  mason: ">=0.1.0-dev.60 <0.1.0"
+
+# Variables specify dynamic values that your brick depends on.
+# Zero or more variables can be specified for a given brick.
+# Each variable has:
+#  * a type (string, number, boolean, enum, array, or list)
+#  * an optional short description
+#  * an optional default value
+#  * an optional list of default values (array only)
+#  * an optional prompt phrase used when asking for the variable
+#  * a list of values (enums only)
+#  * an optional separator (list only)
+vars:
+  workspace_name:
+    type: string
+    description: |
+      The workspace name is just the name that the workspace will have, if you
+      have a main application in the repository a suggestion is
+      main_app_workspace.
+    prompt: What name do you want of your workspace?
+  package_names:
+    type: array
+    description: |
+      The names of the packages that you want to initially have in your
+      monorepo.
+    prompt: What names should the packages have? (comma separated)
