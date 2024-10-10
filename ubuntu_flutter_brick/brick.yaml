@@ -27,7 +27,7 @@ vars:
       main_app_workspace.
     prompt: What name do you want of your workspace?
   package_names:
-    type: array
+    type: list
     description: |
       The names of the packages that you want to initially have in your
       monorepo.
