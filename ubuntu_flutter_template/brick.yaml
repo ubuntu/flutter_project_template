@@ -19,20 +19,20 @@ environment:
 #  * a list of values (enums only)
 #  * an optional separator (list only)
 vars:
-  workspace_name:
+  workspaceName:
     type: string
     description: |
       The workspace name is just the name that the workspace will have, if you
       have a main application in the repository a suggestion is
       main_app_workspace.
     prompt: 'What name do you want of your workspace? (default: current directory name)'
-  package_names:
+  packageNames:
     type: list
     description: |
       The names of the packages that you want to initially have in your
       monorepo.
     prompt: What names should the packages have? (leave empty if none)
-  app_names:
+  appNames:
     type: list
     description: |
       The names of the apps (if any) that you want to initially have in your

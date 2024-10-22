@@ -1,20 +1,20 @@
 import 'dart:io';
 import 'package:mason/mason.dart';
 import 'package:path/path.dart' as path;
+import 'package:pub_api_client/pub_api_client.dart';
 
 import 'utils.dart';
 
-void run(HookContext context) {
+Future<void> run(HookContext context) async {
   final directory = Directory.current;
   final directoryName = path.basename(directory.path);
-  final name = context.vars['workspace_name'] ?? directoryName;
-  context.vars['workspace_name'] = name;
+  final userDefinedWorkspaceName = context.vars['workspaceName'] as String;
+  final name = userDefinedWorkspaceName.isNotEmpty
+      ? userDefinedWorkspaceName
+      : directoryName;
+  context.vars['workspaceName'] = name;
 
-  final contents =
-      directory.listSync().where((e) => !e.path.endsWith('.mason'));
-  print(contents);
-
-  if (contents.isNotEmpty) {
+  if (directory.listSync().isNotEmpty) {
     context.logger.warn('The current directory is not empty.');
     final shouldContinue = context.logger.confirm('Do you want to continue?');
     if (!shouldContinue) {
@@ -26,16 +26,18 @@ void run(HookContext context) {
   maybeInstallFvm(context);
 
   final List<String> appNames =
-      context.vars[ProjectDirectory.packages.listName].cast<String>();
+      context.vars[ProjectDirectory.apps.listName].cast<String>();
   final List<String> projectNames =
       context.vars[ProjectDirectory.packages.listName].cast<String>();
-  context.vars['contains_apps'] = appNames.isNotEmpty;
-  context.vars['contains_packages'] = projectNames.isNotEmpty;
+  context.vars['containsApps'] = appNames.isNotEmpty;
+  context.vars['containsPackages'] = projectNames.isNotEmpty;
 
-  context.vars['flutter_version'] = _getVersion(_Program.flutter);
-  context.vars['sdk_version'] = _getVersion(_Program.dart);
+  context.vars['flutterVersion'] = _getVersion(_Program.flutter);
+  context.vars['sdkVersion'] = _getVersion(_Program.dart);
 
-  Process.runSync('flutter', ['pub', 'add', 'melos']);
+  final pubClient = PubClient();
+  final lintsVersion = (await pubClient.packageVersions('ubuntu_lints')).first;
+  context.vars['lintsVersion'] = lintsVersion;
 }
 
 String _getVersion(_Program program) {

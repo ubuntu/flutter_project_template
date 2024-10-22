@@ -5,3 +5,4 @@ environment:
 
 dependencies:
   mason: ^0.1.0-dev.60
+  pub_api_client: ^3.0.0

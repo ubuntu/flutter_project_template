@@ -1,6 +1,6 @@
 enum ProjectDirectory {
-  packages('package', 'package_names'),
-  apps('app', 'app_names');
+  packages('package', 'packageNames'),
+  apps('app', 'appNames');
 
   const ProjectDirectory(
     this.templateName, // The name of the Flutter template to use.

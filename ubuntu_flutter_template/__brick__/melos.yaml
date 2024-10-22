@@ -1,22 +1,18 @@
-name: {{workspace_name}}
+name: {{workspaceName}}
 sdkPath: .fvm/flutter_sdk
 
-packages:
-{{#contains_apps}}
-  - apps/*
-{{/#containsApps}}
-{{#contains_packages}}
-  - packages/*
-{{/#containsPackages}}
+packages:{{#containsApps}}
+  - apps/*{{/containsApps}}{{#containsPackages}}
+  - packages/*{{/containsPackages}}
 
 command:
   bootstrap:
     environment:
-      sdk: ^{{sdk_version}}
-      flutter: ^{{flutter_version}}
+      sdk: ^{{sdkVersion}}
+      flutter: ^{{flutterVersion}}
 
     dev_dependencies:
-      ubuntu_lints: ^{{lints_version}}
+      ubuntu_lints: ^{{lintsVersion}}
 
 scripts:
   # build all packages

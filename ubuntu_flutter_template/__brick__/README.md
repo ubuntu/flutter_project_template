@@ -1,1 +1,7 @@
-# {{workspace_name}}
+# {{workspaceName}}
+
+| This Is
+{{#containsApps}}
+|
+{{/containsApps}}
+| A Line
