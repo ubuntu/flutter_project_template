@@ -20,13 +20,13 @@ Before you start working on the project, make sure you have the following tools 
 FVM is a simple version manager for Flutter. It allows you to have multiple Flutter versions installed and switch
 between them with ease, which is useful when working on multiple projects that require different Flutter versions.
 
-Install [fvm](https://fvm.app) globally by following the instructions [here](https://fvm.app/docs/getting_started/installation).
+You will be given the option to do it automatically in a later step, but if you want to do it manually you can install
+[fvm](https://fvm.app) globally by following the instructions [here](https://fvm.app/docs/getting_started/installation).
 
 You will also need to change your IDE settings to use the Flutter SDK installed by FVM. In Android Studio/Intellij you
 can do this by going to `File > Project Structure > Project` and selecting the Flutter SDK installed by FVM in the
 `.fvm` directory in your project, and similarly you can do this in VS Code by  pressing `Ctrl + Shift + P` and selecting
 `Flutter: Change SDK`.
-
 
 ### Melos
 
@@ -35,7 +35,8 @@ repository. This is useful when you have multiple packages that depend on each o
 all in one place. It also allows for running commands across all packages in the mono-repo, versioning them together,
 generating changelogs, and more.
 
-Install [Melos](https://melos.invertase.dev) globally by running:
+You will be given the option to do it automatically in a later step, but if you want to do it manually you can install
+[Melos](https://melos.invertase.dev) globally by running:
 
 ```bash
 flutter pub global activate melos
@@ -76,14 +77,33 @@ For state management we use Riverpod with an MVVM (Model-View-ViewModel) style a
    it, and exposing it to the UI. When using Riverpod the ViewModel is either the `notifier` or the `provider` itself.
  - Views: Widgets that are responsible for rendering the page. They should not contain any business logic.
 
+## Linting
 
+For linting we use the [ubuntu_lints](https://pub.dev/packages/ubuntu_lints) package. This package contains a set of
+lint rules that are based on the [Effective Dart](https://dart.dev/guides/language/effective-dart) guide and the
+[Flutter Style Guide](https://flutter.dev/docs/development/tools/static-analysis/options), it's mostly a superset of the
+flutter_lints package.
 
+## License
 
+There are a plethora of licenses used in the Canonical and Ubuntu organizations.
+The most commonly used licences are:
+ - Apache-2.0 (Apache License 2.0)
+ - GPL-3.0 (GNU General Public License 3.0)
+ - MIT (MIT License)
 
+The LICENSE file should be placed in the root of the repository and should contain the full text of the license.
+If you're unsure which license to use, consult with the project lead, and if there isn't a project lead for the project,
+you can go to the [Choose a License](https://choosealicense.com/) website to help you choose a license.
+
+## Translations
+
+If you need translations in your project you can use Weblate. Weblate is a free and open-source web-based translation
+management system. It is designed to let contributors help translating your project into multiple languages.
+
+TODO: How to set it up.
 
 
 TODO:
 - Show what needs to be set up in pub and on GitHub
-- Possibly use Mason (https://pub.dev/packages/mason)
-- Linting
-- License
+- Releasing from GitHub with melos-action
