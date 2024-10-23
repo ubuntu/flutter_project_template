@@ -96,14 +96,53 @@ The LICENSE file should be placed in the root of the repository and should conta
 If you're unsure which license to use, consult with the project lead, and if there isn't a project lead for the project,
 you can go to the [Choose a License](https://choosealicense.com/) website to help you choose a license.
 
-## Translations
+## Generated files
+
+We never check-in any generated files to the repository. So make sure that your generated files are in the `.gitignore`
+file. Instead we generate the files in the CI/CD pipeline and locally when needed.
+
+### Freezed
+
+Since Dart doesn't have any built-in data classes, we use the [freezed](https://pub.dev/packages/freezed) package to
+generate them (when it is needed, you can also create them manually when you know they aren't going to change often).
+Freezed is a code generator that makes it easy to work with immutable classes. It generates `copyWith` methods, `==`
+and `hashCode` methods, and more for you. It's especially useful when working with Riverpod and immutable classes.
+
+### Translations
 
 If you need translations in your project you can use Weblate. Weblate is a free and open-source web-based translation
 management system. It is designed to let contributors help translating your project into multiple languages.
 
 TODO: How to set it up.
 
+## Releasing packages to pub.dev
 
-TODO:
-- Show what needs to be set up in pub and on GitHub
-- Releasing from GitHub with melos-action
+The first release you make of a package to pub.dev you need to do manually with your own account. After that you should
+transfer the package to the Canonical or Ubuntu organization on pub.dev, so that anyone in the organizations can do
+releases.
+
+### Automatic releases
+
+For automatic releases we use the [melos-action](https://github.com/marketplace/actions/melos-action) which makes it
+possible to release packages by just pressing a button in the GitHub UI (Actions -> Prepare release -> Run workflow).
+
+To enable automatic releases you have to go to the pub.dev admin page for the package and do the following settings:
+
+![image](https://github.com/user-attachments/assets/8fdafb60-2a98-4a59-ab7f-dcd733e4ae74)
+
+Don't forget to press the update button after you have made the changes.
+
+For this to work you should have the following files in your `.github/workflows` directory:
+
+ - `release-prepare.yaml` will open a PR with the changes needed for the release.
+ - `release-tag.yaml` will start once the preparation PR is merged and will tag each package that should be released.
+ - `release-publish.yaml` will run once for each new tag and do the actual release to pub.dev.
+
+These files are included in the template, so you should not have to do anything to set it up.
+
+## Lockfiles
+
+For applications you should check-in the `pubspec.lock` file to lock the versions of the dependencies. This is to ensure
+that everyone working on the project and the CI is using the same versions of the dependencies. For packages you should
+not check-in the `pubspec.lock` file since they should be open to using a range of versions in the projects that depend
+on the package.

@@ -39,6 +39,7 @@ Future<void> create(HookContext context, ProjectDirectory type) async {
       runInShell: true,
     );
     await process.stderr.transform(utf8.decoder).forEach(print);
+    // TODO: Add basic packages
 
     progress.complete();
   }
