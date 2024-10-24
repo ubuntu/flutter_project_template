@@ -1,0 +1,5 @@
+name: {{workspaceName}}
+publish_to: none
+
+environment:
+  sdk: {{sdkVersion}}
