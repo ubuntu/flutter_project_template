@@ -53,7 +53,7 @@ After you have created a new project on GitHub you can use Mason to get started 
 You can install it by running:
 
 ```bash
-flutter pub global activate mason-cli
+flutter pub global activate mason_cli
 ```
 
 Then you can install the template by running:

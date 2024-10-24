@@ -15,6 +15,7 @@ Future<void> run(HookContext context) async {
   context.vars['workspaceName'] = name;
 
   if (directory.listSync().isNotEmpty) {
+    // TODO: Print pwd
     context.logger.warn('The current directory is not empty.');
     final shouldContinue = context.logger.confirm('Do you want to continue?');
     if (!shouldContinue) {
