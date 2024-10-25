@@ -26,13 +26,10 @@ Future<void> run(HookContext context) async {
   maybeInstallMelos(context);
   maybeInstallFvm(context);
 
-  final List<String> appNames = context.vars[ProjectDirectory.apps.listName]
-      .cast<String>()
-      .map((s) => s.trim());
-  final List<String> projectNames = context
-      .vars[ProjectDirectory.packages.listName]
-      .cast<String>()
-      .map((s) => s.trim());
+  final List<String> appNames =
+      context.vars[ProjectDirectory.apps.listName].cast<String>();
+  final List<String> projectNames =
+      context.vars[ProjectDirectory.packages.listName].cast<String>();
   context.vars['containsApps'] = appNames.isNotEmpty;
   context.vars['containsPackages'] = projectNames.isNotEmpty;
 

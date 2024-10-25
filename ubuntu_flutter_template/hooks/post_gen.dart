@@ -20,10 +20,11 @@ Future<void> run(HookContext context) async {
 
   _runSync(context, 'fvm', ['install']);
   _runSync(context, 'melos', ['bootstrap'], silent: true);
+  context.logger.info('Workspace setup complete!');
 }
 
 Future<void> create(HookContext context, ProjectDirectory type) async {
-  final List<String> projectNames = context.vars[type.listName].cast<String>();
+  final List<String> projectNames = _parseStringList(context, type.listName);
   if (projectNames.isEmpty) {
     return;
   }
@@ -87,4 +88,12 @@ void _runSync(
     context.logger.info(result.stdout);
   }
   context.logger.err(result.stderr);
+}
+
+List<String> _parseStringList(HookContext context, String key) {
+  return context.vars[key]
+      .cast<String>()
+      .map((s) => s.trim())
+      .toList()
+      .cast<String>();
 }

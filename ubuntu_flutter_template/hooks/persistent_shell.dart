@@ -24,13 +24,11 @@ class PersistentShell {
   final String _failureEndMarker = '__FAILURE_COMMAND_END__';
 
   Future<void> startShell() async {
-    logger.info('Starting shell');
     _process = await Process.start(
       '/bin/sh',
       [],
       workingDirectory: workingDirectory,
     );
-    logger.info('Started shell');
 
     _listenToProcessStream(_process.stdout, isSilent: silent);
     _listenToProcessStream(_process.stderr, isError: true, isSilent: silent);
@@ -39,7 +37,6 @@ class PersistentShell {
   Future<bool> sendCommand(String command) async {
     assert(_commandCompleter == null, 'A command is already in progress.');
     _commandCompleter = Completer<void>();
-    logger.info('Running $command');
 
     final fullCommand = _buildFullCommand(command);
     _process.stdin.writeln(fullCommand);
