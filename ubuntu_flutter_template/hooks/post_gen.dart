@@ -6,7 +6,7 @@ import 'persistent_shell.dart';
 import 'utils.dart';
 
 const dependencies = {
-  'apps': ['ubuntu_lints', 'flutter_riverpod'],
+  'apps': ['ubuntu_lints', 'flutter_riverpod', 'yaru'],
   'packages': ['ubuntu_lints'],
 };
 
@@ -14,8 +14,7 @@ Future<void> run(HookContext context) async {
   await create(context, ProjectDirectory.packages);
   await create(context, ProjectDirectory.apps);
 
-  // TODO: Change to unversioned (latest)
-  Process.runSync('flutter', ['pub', 'add', '--dev', 'melos:6.1.0']);
+  Process.runSync('flutter', ['pub', 'add', 'melos']);
   Process.runSync('flutter', ['pub', 'get']);
 
   _runSync(context, 'fvm', ['install']);
