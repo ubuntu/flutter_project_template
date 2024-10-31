@@ -1,0 +1,7 @@
+name: clipboard_history_workspace
+publish_to: none
+
+environment:
+  sdk: ^3.5.3
+dev_dependencies:
+  melos: ^6.2.0

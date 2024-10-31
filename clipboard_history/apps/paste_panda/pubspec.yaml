@@ -1,0 +1,26 @@
+name: paste_panda
+description: "A clipboard manager with history."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  clipboard_history: ^0.1.0
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  ubuntu_lints: ^0.4.1
+  ubuntu_service: ^0.4.0
+  yaru: ^5.3.2
+
+dev_dependencies:
+  build_runner: ^2.4.13
+  flutter_test:
+    sdk: flutter
+  riverpod_generator: ^2.6.2
+
+flutter:
+  uses-material-design: true

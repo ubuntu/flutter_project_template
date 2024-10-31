@@ -1,0 +1,17 @@
+name: clipboard_history
+description: "Polls the clipboard to store a history of the values"
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.3.2
+  ubuntu_lints: ^0.4.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  shared_preferences_platform_interface: ^2.4.1
