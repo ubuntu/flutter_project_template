@@ -5,6 +5,7 @@ import 'package:paste_panda/clipboard_list.dart';
 import 'package:ubuntu_service/ubuntu_service.dart';
 import 'package:yaru/constants.dart';
 import 'package:yaru/settings.dart';
+import 'package:yaru/theme.dart';
 
 void main() async {
   final clipboard = ClipboardHistory.sharedPreferences();
@@ -24,6 +25,8 @@ class PastePandaApp extends StatelessWidget {
         builder: (context, yaru, child) => MaterialApp(
           theme: yaru.theme,
           darkTheme: yaru.darkTheme,
+          highContrastTheme: yaruHighContrastLight,
+          highContrastDarkTheme: yaruHighContrastDark,
           debugShowCheckedModeBanner: false,
           home: Scaffold(
             body: Padding(
