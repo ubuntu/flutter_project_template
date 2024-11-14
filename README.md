@@ -96,6 +96,11 @@ The LICENSE file should be placed in the root of the repository and should conta
 If you're unsure which license to use, consult with the project lead, and if there isn't a project lead for the project,
 you can go to the [Choose a License](https://choosealicense.com/) website to help you choose a license.
 
+## Issue Templates
+
+Issue template templates can be found under `clipboard_history/.github/ISSUE_TEMPLATE`. When creating a new project,
+replace `PROJECT_TODO` with relevent project details.
+
 ## Generated files
 
 We never check-in any generated files to the repository. So make sure that your generated files are in the `.gitignore`
